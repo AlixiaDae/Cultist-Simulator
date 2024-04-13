@@ -1,0 +1,84 @@
+@mixin flexCenter($direction,$justify,$align) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+
+    ul {
+        list-style: none;
+    }
+    
+    @include flexCenter(column, '', '')
+}
+
+header {
+    font-size: 1.5rem;
+    border: 1px solid black;
+
+    @include flexCenter(column, center, center)
+}
+
+nav {
+    font-size: 1.5rem;
+    border-bottom: 1px solid black;
+
+    ul {
+            height: 3rem;
+            margin: 0;
+            padding: 0;
+
+        .door-tab {
+            width: 100%;
+            text-align: center;
+            padding: .5rem;
+
+            &:first-child {
+
+                &:hover {
+                    background-color: rgb(117, 250, 206);
+                    cursor: pointer;
+                }
+                
+            }
+
+            &:nth-child(2) {
+
+                &:hover {
+                    background-color: rgb(228, 228, 228);
+                    cursor: pointer;
+                }
+            }
+
+            &:nth-child(3) {
+
+                &:hover {
+                    background-color: rgb(255, 118, 237);
+                    cursor: pointer;
+                    color: whitesmoke;
+                }
+            }
+        }
+
+        
+
+    @include flexCenter(row, space-between, '')
+    }
+    
+}
