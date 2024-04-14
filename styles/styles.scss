@@ -5,6 +5,7 @@
     align-items: $align;
 }
 
+
 html {
     box-sizing: border-box;
 }
@@ -25,11 +26,12 @@ body {
         list-style: none;
     }
     
-    @include flexCenter(column, '', '')
+    display: flex;
+    flex-direction: column;
 }
 
 header {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     border: 1px solid black;
 
     @include flexCenter(column, center, center)
@@ -38,8 +40,28 @@ header {
 nav {
     font-size: 1.5rem;
     border-bottom: 1px solid black;
+    
 
     ul {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+
+        li {
+            height: 3rem;
+            user-select: none;
+            &:hover {
+                background-color: lightblue;
+                text-decoration: underline;
+                cursor: pointer;
+            }
+
+            @include flexCenter(row, center, center)
+        }
+        
+    }
+
+    /*ul {
             height: 3rem;
             margin: 0;
             padding: 0;
@@ -61,7 +83,7 @@ nav {
             &:nth-child(2) {
 
                 &:hover {
-                    background-color: rgb(228, 228, 228);
+                    background-color: rgb(120, 206, 255);
                     cursor: pointer;
                 }
             }
@@ -71,14 +93,82 @@ nav {
                 &:hover {
                     background-color: rgb(255, 118, 237);
                     cursor: pointer;
-                    color: whitesmoke;
+                
+                }
+            }
+
+            &:nth-child(4) {
+
+                &:hover {
+                    background-color: rgb(140, 206, 250);
+                    cursor: pointer;
+                }
+            }
+
+            &:nth-child(5) {
+
+                &:hover {
+                    background-color: rgb(225, 142, 250);
+                    cursor: pointer;
                 }
             }
         }
 
-        
 
-    @include flexCenter(row, space-between, '')
+    @include flexCenter(row, center, center)
+
+    }*/
+
+
+    @include flexCenter(row, center, center)
+    
+}
+
+.content-box {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    position: relative;
+
+}
+
+.mansus-table {
+    background-image: url('../src/Mansus.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1600px;
+    margin: 0;
+    padding-top: 1rem;
+    
+    height: 100%;
+    width: 100%;
+
+    ul {
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        border-right: 1px solid black;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        width: 300px;
+        height: 40%;
+        margin: 0;
+        padding-top: 1rem;
+
+        li {
+            font-size: 1.3rem;
+            padding: 1rem;
+            transition: transform .4s ease-in-out;
+            
+
+            &:hover {
+                transform: scale(1.1);
+                cursor: pointer;
+                user-select: none;
+            }
+        }
     }
     
 }
+
+
+
