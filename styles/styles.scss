@@ -175,36 +175,45 @@ nav {
 
         .way-box {
             display: grid;
-            grid-template-columns: repeat(3, 350px);
-            grid-template-rows: 80px 1fr 1fr 1fr;
-            font-size: 1rem;
-            min-width: calc(350*3);
+            grid-template-rows: 80px 1fr;
+            width: 1050px;
+            background-color: white;
             height: 640px;
             margin-right: 200px;
-            background-color: white;
             overflow: auto;
             flex-shrink: 0;
-            
-            
-            div {
-                font-size: 1.4rem;
+
+            .headers {
+                display: grid;
+                grid-template-columns: repeat(3, 350px);
+                font-size: 1.3rem;
                 text-align: center;
-                border-bottom: 1px solid black;
-                border-top: 1px solid black;
-                overflow: scroll;
 
-                @include flexCenter(row, center, center)
+                div {
+                    padding-top: 20px;
+                    border-top: 1px solid black;
+                    border-bottom: 1px solid black;
+                }
+
+                div:last-child {
+                    border-right: 1px solid black;
+                    border-left: 1px solid black;
+                }
+
+                div:not(:last-child) {
+                    border-left: 1px solid black;
+                }
             }
 
-            div:first-child {
-                border-left: 1px solid black;
+            .way-products {
+                display: grid;
+                grid-template-columns: repeat(3, 350px);
+                grid-template-rows: 1fr 1fr 1fr;
+                grid-auto-rows: 1fr;
             }
-
-            div:first-child, div:nth-child(2) {
-                border-right: 1px solid black;
-            }
-            
         }
+
+        
 
         @include flexCenter(row, space-between, center)
         

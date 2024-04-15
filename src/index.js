@@ -1,4 +1,4 @@
-
+import mansus from "./products.js"
 
 const mainNavItem = document.querySelectorAll(".main-nav-item")
 const mansusTable = document.querySelector(".mansus-table")
@@ -23,11 +23,14 @@ mainNavItem.forEach(tab => {
 
 const doorTabs = document.querySelectorAll(".door-tab")
 const wayBox = document.querySelector(".way-box")
+const wayBoxHeaders = document.querySelector(".headers")
+const wayProducts = document.querySelector(".way-products")
+const wayProductsColumns = document.querySelectorAll(".products")
 
 doorTabs.forEach(tab => {
     tab.addEventListener("click", () => {
         console.log(tab.textContent)
-        populateWayBox(tab, wayBox)
+        populateWayBox(tab, wayBoxHeaders)
     })
 })
 
@@ -43,6 +46,8 @@ function populateWayBox(tabName, box) {
             templeHeader.textContent = "The Temple of the Wheel"
 
             box.append(woodHeader, wellHeader, templeHeader)
+
+            populateWayColumns(woodHeader, wayProductsColumns[0])
         } else if(tabName.textContent.toLowerCase() == "the white door") {
             clearWayBox()
             const whiteHeader = document.createElement("div")
@@ -88,12 +93,35 @@ function populateWayBox(tabName, box) {
 
             box.append(peacockHeader, redHeader, wormHeader)
         }
+
 }
+
+function populateWayColumns(headerName, productColumn) {
+    if(headerName.textContent.toLowerCase() == "the wood") {
+    }
+    const wood = mansus.getWay("The Wood")
+}
+
+
 
 
 // UTIL
 
 function clearWayBox() {
-    wayBox.textContent = ""
-    wayBox.style.display = "grid"
+    wayBoxHeaders.textContent = ""
+    wayBox.style.display = "grid"   
 }
+
+function createDiv(name, aspect, degree) {
+    const div = document.createElement("div")
+
+    if(aspect == "") {
+        div.textContent = `${name}`
+    } else {
+        div.textContent = `${name} (${aspect} ${degree})`
+    }
+
+    return div
+}
+
+console.log(mansus.getWay("The White Door"))
