@@ -24,13 +24,14 @@ mainNavItem.forEach(tab => {
 const doorTabs = document.querySelectorAll(".door-tab")
 const wayBox = document.querySelector(".way-box")
 const wayBoxHeaders = document.querySelector(".headers")
-const wayProducts = document.querySelector(".way-products")
+
 const wayProductsColumns = document.querySelectorAll(".products")
 
 doorTabs.forEach(tab => {
     tab.addEventListener("click", () => {
         console.log(tab.textContent)
         populateWayBox(tab, wayBoxHeaders)
+        populateWayColumns(tab.textContent)
     })
 })
 
@@ -46,8 +47,7 @@ function populateWayBox(tabName, box) {
             templeHeader.textContent = "The Temple of the Wheel"
 
             box.append(woodHeader, wellHeader, templeHeader)
-
-            populateWayColumns(woodHeader, wayProductsColumns[0])
+            
         } else if(tabName.textContent.toLowerCase() == "the white door") {
             clearWayBox()
             const whiteHeader = document.createElement("div")
@@ -96,10 +96,104 @@ function populateWayBox(tabName, box) {
 
 }
 
-function populateWayColumns(headerName, productColumn) {
-    if(headerName.textContent.toLowerCase() == "the wood") {
+function populateWayColumns(tabName) {
+    if(tabName == "The Wood") {
+        const wood = mansus.getWay("The Wood").getProducts()
+        const well = mansus.getWay("The Well").getProducts()
+        const temple = mansus.getWay("The Temple of the Wheel").getProducts()
+        
+        wood.forEach(item => {
+            const itemDiv = createDiv(item.name, item.aspect, item.degree)
+            wayProductsColumns[0].appendChild(itemDiv)
+        })
+        well.forEach(item => {
+            const itemDiv = createDiv(item.name, item.aspect, item.degree)
+            wayProductsColumns[1].appendChild(itemDiv)
+        })
+        temple.forEach(item => {
+            const itemDiv = createDiv(item.name, item.aspect, item.degree)
+            wayProductsColumns[2].appendChild(itemDiv)
+        })
+
+        return wayProductsColumns
+    } else if(tabName == "The White Door") {
+        const white = mansus.getWay("The White Door").getProducts()
+        const lodge = mansus.getWay("Lodge of the Sage Knight").getProducts()
+        const lights = mansus.getWay("The Orchard of Lights").getProducts()
+        
+        white.forEach(item => {
+            const itemDiv = createDiv(item.name, item.aspect, item.degree)
+            wayProductsColumns[0].appendChild(itemDiv)
+        })
+        lodge.forEach(item => {
+            const itemDiv = createDiv(item.name, item.aspect, item.degree)
+            wayProductsColumns[1].appendChild(itemDiv)
+        })
+        lights.forEach(item => {
+            const itemDiv = createDiv(item.name, item.aspect, item.degree)
+            wayProductsColumns[2].appendChild(itemDiv)
+        })
+
+        return wayProductsColumns
+    } else if(tabName == "The Stag Door") {
+        const stag = mansus.getWay("The Stag Door").getProducts()
+        const ascent = mansus.getWay("The Ascent of Knives").getProducts()
+        const painted = mansus.getWay("The Painted River").getProducts()
+        
+        stag.forEach(item => {
+            const itemDiv = createDiv(item.name, item.aspect, item.degree)
+            wayProductsColumns[0].appendChild(itemDiv)
+        })
+        ascent.forEach(item => {
+            const itemDiv = createDiv(item.name, item.aspect, item.degree)
+            wayProductsColumns[1].appendChild(itemDiv)
+        })
+        painted.forEach(item => {
+            const itemDiv = createDiv(item.name, item.aspect, item.degree)
+            wayProductsColumns[2].appendChild(itemDiv)
+        })
+
+        return wayProductsColumns
+    } else if(tabName == "The Spider Door") {
+        const spider = mansus.getWay("The White Door").getProducts()
+        const malleary = mansus.getWay("The Malleary").getProducts()
+        const chamberway = mansus.getWay("The Chamber of Ways").getProducts()
+        
+        spider.forEach(item => {
+            const itemDiv = createDiv(item.name, item.aspect, item.degree)
+            wayProductsColumns[0].appendChild(itemDiv)
+        })
+        malleary.forEach(item => {
+            const itemDiv = createDiv(item.name, item.aspect, item.degree)
+            wayProductsColumns[1].appendChild(itemDiv)
+        })
+        chamberway.forEach(item => {
+            const itemDiv = createDiv(item.name, item.aspect, item.degree)
+            wayProductsColumns[2].appendChild(itemDiv)
+        })
+
+        return wayProductsColumns
+    } else if(tabName == "The Peacock Door") {
+        const peacock = mansus.getWay("The Peacock's Door").getProducts()
+        const red = mansus.getWay("The Red Church").getProducts()
+        const worm = mansus.getWay("The Worm Museum").getProducts()
+        
+        peacock.forEach(item => {
+            const itemDiv = createDiv(item.name, item.aspect, item.degree)
+            wayProductsColumns[0].appendChild(itemDiv)
+        })
+        red.forEach(item => {
+            const itemDiv = createDiv(item.name, item.aspect, item.degree)
+            wayProductsColumns[1].appendChild(itemDiv)
+        })
+        worm.forEach(item => {
+            const itemDiv = createDiv(item.name, item.aspect, item.degree)
+            wayProductsColumns[2].appendChild(itemDiv)
+        })
+
+        return wayProductsColumns
     }
-    const wood = mansus.getWay("The Wood")
+    
 }
 
 
@@ -109,13 +203,16 @@ function populateWayColumns(headerName, productColumn) {
 
 function clearWayBox() {
     wayBoxHeaders.textContent = ""
+    wayProductsColumns.forEach(item => {
+        item.textContent = ""
+    })
     wayBox.style.display = "grid"   
 }
 
 function createDiv(name, aspect, degree) {
     const div = document.createElement("div")
 
-    if(aspect == "") {
+    if(aspect == undefined || degree == "") {
         div.textContent = `${name}`
     } else {
         div.textContent = `${name} (${aspect} ${degree})`

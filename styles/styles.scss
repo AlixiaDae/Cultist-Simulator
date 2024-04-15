@@ -47,6 +47,8 @@ nav {
         padding: 0;
         margin: 0;
         width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
 
         li {
             height: 3rem;
@@ -58,6 +60,10 @@ nav {
             }
 
             @include flexCenter(row, center, center)
+        }
+
+        li:first-child {
+            border-right: 1px solid black;
         }
         
     }
@@ -134,7 +140,7 @@ nav {
     display: none;
 
     .mansus-table {
-        background-image: url('../src/Mansus.png');
+        background-image: url('../src/img/Mansus.png');
         background-repeat: no-repeat;
         background-position: center;
         background-size: 100% 100%;
@@ -156,19 +162,40 @@ nav {
             padding-top: 1rem;
             background-color: white;
             flex-shrink: 0;
-    
-            li {
-                font-size: 2rem;
-                padding: 1rem;
-                transition: transform .4s ease-in-out;
-                
-    
-                &:hover {
+
+            div {
+                gap: 15px;
+
+                li {
+                    font-size: 2rem;
+                    padding: 1rem;
+                    transition: transform .4s ease-in-out;
+
+                    &:hover img{
+                        opacity: 1;
+                    }
+                }
+                img {
+                    height: 45px;
+                    transition: opacity .4s ease-in-out;
+                    transition: transform .4s ease-in-out;
+                    border-radius: 10px;
+                    opacity: 0;
+                }
+
+                &:hover li {
                     transform: scale(1.1);
                     cursor: pointer;
                     user-select: none;
                     text-decoration: underline;
                 }
+
+                &:hover img {
+                    opacity: 1;
+                    transform: scale(1.5);
+                }
+
+                @include flexCenter(row, '', center)
             }
             
         }
@@ -178,7 +205,7 @@ nav {
             grid-template-rows: 80px 1fr;
             width: 1050px;
             background-color: white;
-            height: 640px;
+            height: 85%;
             margin-right: 200px;
             overflow: auto;
             flex-shrink: 0;
@@ -186,7 +213,7 @@ nav {
             .headers {
                 display: grid;
                 grid-template-columns: repeat(3, 350px);
-                font-size: 1.3rem;
+                font-size: 1.4rem;
                 text-align: center;
 
                 div {
@@ -208,18 +235,34 @@ nav {
             .way-products {
                 display: grid;
                 grid-template-columns: repeat(3, 350px);
-                grid-template-rows: 1fr 1fr 1fr;
-                grid-auto-rows: 1fr;
+                font-size: 1.2rem;
+                
+                .products {
+                    display: grid;
+                    grid-template-rows: repeat(3, 1fr);
+                    grid-auto-rows: 1fr;
+                    text-align: center;
+                    border-bottom: 1px solid black;
+                    
+                    border-right: 1px solid black;
+                    
+                    div {
+                        padding: 20px 15px 15px 10px;
+                    }
+                    div:not(:last-child) {
+                        border-bottom: 1px solid black;
+                    }
+                }
+
+                .products:first-child {
+                    border-left: 1px solid black;
+                }
             }
         }
-
-        
 
         @include flexCenter(row, space-between, center)
         
     }
-
-    
 
 }
 

@@ -101,21 +101,21 @@ const imperative = new Product("An Imperative of Appetite", "Grail", 10)
 
 const mansus = new Mansus()
 
-const wood = [occult, buzz, peculiar]
-const well = [furtive, awareness, vitality, peculiar]
-const temple = [furtive, subtle, trembling, peculiar]
-const white = [restless, furtive, icy]
-const lodge = [fascination, glimmering, erudition, favor, forgotten, fracture]
-const lights = [glimmering, forgotten, intensity, pulsing]
+const wood = [buzz, occult, peculiar]
+const well = [furtive, awareness, peculiar, vitality]
+const temple = [furtive, peculiar, subtle, trembling]
+const white = [furtive, icy, restless]
+const lodge = [favor, forgotten, erudition, fascination, glimmering, fracture]
+const lights = [forgotten, intensity, glimmering,  pulsing]
 const stag = [forgotten, heat, rupture]
 const ascent = [urgency, air, bitter]
 const painted = [fascination, erulesson, epic]
 const spider = [epic, imperative, favor, pounding]
-const malleary = [blaze, unresolved, incandescence, iotic]
-const chamberway = [fascination, forgotten, bitter, blaze, howling, door]
-const peacock = [vak, fascination, unresolved, splendour]
-const red = [fascination, favor, map, incandescence, amaranthine]
-const worm = [dread, map, frost]
+const malleary = [blaze,  incandescence, iotic, unresolved]
+const chamberway = [ forgotten, bitter, blaze, howling, fascination, door]
+const peacock = [splendour, fascination,  vak, unresolved]
+const red = [ favor,  amaranthine, incandescence, fascination, map]
+const worm = [dread, frost, map,]
 
 wood.forEach(item => {
     mansus.getWay("The Wood").addProducts(item)
@@ -125,7 +125,7 @@ well.forEach(item => {
     mansus.getWay("The Well").addProducts(item)
 })
 temple.forEach(item => {
-    mansus.getWay("The Well").addProducts(item)
+    mansus.getWay("The Temple of the Wheel").addProducts(item)
 })
 white.forEach(item => {
     mansus.getWay("The White Door").addProducts(item)
