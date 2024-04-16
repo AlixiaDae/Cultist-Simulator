@@ -1,34 +1,34 @@
 import mansus from "./products.js"
+import grim from "./rituals.js"
 
 // VARIABLES
 const header = document.querySelector("h1")
 const mainNavItem = document.querySelectorAll(".main-nav-item")
 const mansusTable = document.querySelector(".mansus-table")
-const contentBox = document.querySelector(".content-box")
+const rituals = document.querySelector(".rituals")
 const doorTabs = document.querySelectorAll(".door-tab")
 const wayBox = document.querySelector(".way-box")
 const wayBoxHeaders = document.querySelector(".headers")
 const wayProductsColumns = document.querySelectorAll(".products")
 
+console.log(grim)
+
 // LISTENERS
 header.addEventListener("click", () => {
-    mansusTable.classList.toggle("hidden")
+    mansusTable.classList.add("hidden")
     wayBox.classList.add("inactive")
 })
 
 mainNavItem[0].addEventListener("click", () => {
     mansusTable.classList.toggle("hidden")
+    rituals.classList.add("hidden")
     wayBox.classList.add("inactive")
 })
 
-mainNavItem.forEach(tab => {
-    tab.addEventListener("click", () => {
-        if(tab.textContent == "The Mansus") {
-            contentBox.style.display = "block"
-        } else {
-            console.log("none yet")
-        }
-    })
+mainNavItem[1].addEventListener("click", () => {
+    mansusTable.classList.add("hidden")
+    rituals.classList.toggle("hidden")
+    wayBox.classList.add("inactive")
 })
 
 doorTabs.forEach(tab => {

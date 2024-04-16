@@ -172,7 +172,7 @@ nav ul li:hover {
   font-size: 1.4rem;
   text-align: center;
   font-weight: bold;
-  font-family: "Philosopher", sans-serif;
+  font-family: "Belgrad", sans-serif;
 }
 .content-box .mansus-table .way-box .headers div {
   padding: 10px 20px 0px 20px;
@@ -219,6 +219,24 @@ nav ul li:hover {
   opacity: 0;
 }
 .content-box .mansus-table.hidden {
+  position: absolute;
+  top: 815px;
+}
+.content-box .rituals {
+  background-image: url("../src/img/rites.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  margin: 0;
+  padding-top: 1rem;
+  overflow: auto;
+  position: relative;
+  top: -0.5px;
+  transition: all 0.5s ease-in-out;
+  height: 100%;
+  width: 100%;
+}
+.content-box .rituals.hidden {
   position: absolute;
   top: 815px;
 }/*# sourceMappingURL=styles.css.map */
