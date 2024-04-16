@@ -12,6 +12,8 @@ body {
   padding: 0;
   margin: 0;
   height: 100vh;
+  background-color: rgb(36, 75, 97);
+  overflow: hidden;
   display: flex;
   flex-direction: column;
 }
@@ -20,104 +22,62 @@ body ul {
 }
 
 header {
-  font-size: 1.4rem;
-  border: 1px solid black;
+  font-size: 1.3rem;
   font-weight: bold;
+  color: whitesmoke;
+  font-family: "Philosopher", sans-serif;
+  background-color: rgb(18, 52, 70);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+header h1 {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+header h1:hover {
+  transform: scale(1.1);
+  text-shadow: 0 0 5px #c5c5c5;
+}
 
 nav {
-  font-size: 2rem;
-  border-bottom: 1px solid black;
-  /*ul {
-          height: 3rem;
-          margin: 0;
-          padding: 0;
-
-      .door-tab {
-          width: 100%;
-          text-align: center;
-          padding: .5rem;
-
-          &:first-child {
-
-              &:hover {
-                  background-color: rgb(117, 250, 206);
-                  cursor: pointer;
-              }
-
-          }
-
-          &:nth-child(2) {
-
-              &:hover {
-                  background-color: rgb(120, 206, 255);
-                  cursor: pointer;
-              }
-          }
-
-          &:nth-child(3) {
-
-              &:hover {
-                  background-color: rgb(255, 118, 237);
-                  cursor: pointer;
-
-              }
-          }
-
-          &:nth-child(4) {
-
-              &:hover {
-                  background-color: rgb(140, 206, 250);
-                  cursor: pointer;
-              }
-          }
-
-          &:nth-child(5) {
-
-              &:hover {
-                  background-color: rgb(225, 142, 250);
-                  cursor: pointer;
-              }
-          }
-      }
-
-
-  @include flexCenter(row, center, center)
-
-  }*/
+  font-size: 1.5rem;
+  background-color: rgb(18, 52, 70);
+  color: whitesmoke;
+  font-weight: bold;
+  font-family: "Philosopher", sans-serif;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 nav ul {
-  padding: 0;
   margin: 0;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
 nav ul li {
+  padding-bottom: 30px;
   height: 3rem;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+  transition: transform 0.3s ease-in-out;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 nav ul li:hover {
-  background-color: lightblue;
   text-decoration: underline;
   cursor: pointer;
-}
-nav ul li:first-child {
-  border-right: 1px solid black;
+  transform: scale(1.1);
+  text-shadow: 0 0 5px #c5c5c5;
 }
 
 .content-box {
@@ -125,7 +85,6 @@ nav ul li:first-child {
   padding: 0;
   height: 100vh;
   position: relative;
-  display: none;
 }
 .content-box .mansus-table {
   background-image: url("../src/img/Mansus.png");
@@ -135,6 +94,9 @@ nav ul li:first-child {
   margin: 0;
   padding-top: 1rem;
   overflow: auto;
+  position: relative;
+  top: -0.5px;
+  transition: all 0.5s ease-in-out;
   height: 100%;
   width: 100%;
   gap: 10px;
@@ -144,7 +106,10 @@ nav ul li:first-child {
   align-items: center;
 }
 .content-box .mansus-table ul {
-  box-shadow: 6px 6px 3px 3px rgb(56, 56, 56);
+  box-shadow: 5px 5px 5px 2px rgb(56, 56, 56);
+  border-top: 1.5px solid black;
+  border-right: 1.5px solid black;
+  border-bottom: 1.5px solid black;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   min-width: 420px;
@@ -197,24 +162,33 @@ nav ul li:first-child {
   margin-right: 200px;
   overflow: auto;
   flex-shrink: 0;
+  opacity: 1;
+  transition: opacity 0.3s;
+  border-radius: 10px;
 }
 .content-box .mansus-table .way-box .headers {
   display: grid;
   grid-template-columns: repeat(3, 350px);
   font-size: 1.4rem;
   text-align: center;
+  font-weight: bold;
+  font-family: "Philosopher", sans-serif;
 }
 .content-box .mansus-table .way-box .headers div {
-  padding-top: 20px;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
+  padding: 10px 20px 0px 20px;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+.content-box .mansus-table .way-box .headers div:first-child {
+  border-top-left-radius: 10px;
 }
 .content-box .mansus-table .way-box .headers div:last-child {
-  border-right: 1px solid black;
-  border-left: 1px solid black;
+  border-right: 2px solid black;
+  border-left: 2px solid black;
+  border-top-right-radius: 10px;
 }
 .content-box .mansus-table .way-box .headers div:not(:last-child) {
-  border-left: 1px solid black;
+  border-left: 2px solid black;
 }
 .content-box .mansus-table .way-box .way-products {
   display: grid;
@@ -226,15 +200,25 @@ nav ul li:first-child {
   grid-template-rows: repeat(3, 1fr);
   grid-auto-rows: 1fr;
   text-align: center;
-  border-bottom: 1px solid black;
-  border-right: 1px solid black;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
 }
 .content-box .mansus-table .way-box .way-products .products div {
   padding: 20px 15px 15px 10px;
 }
 .content-box .mansus-table .way-box .way-products .products div:not(:last-child) {
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid black;
+}
+.content-box .mansus-table .way-box .way-products .products div:last-child {
+  border-bottom-left-radius: 10px;
 }
 .content-box .mansus-table .way-box .way-products .products:first-child {
-  border-left: 1px solid black;
+  border-left: 2px solid black;
+}
+.content-box .mansus-table .way-box.inactive {
+  opacity: 0;
+}
+.content-box .mansus-table.hidden {
+  position: absolute;
+  top: 815px;
 }/*# sourceMappingURL=styles.css.map */

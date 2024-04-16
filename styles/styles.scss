@@ -1,3 +1,7 @@
+$headerColor: rgb(18, 52, 70);
+$bodyColor: rgb(36, 75, 97);
+
+
 @mixin flexCenter($direction,$justify,$align) {
     display: flex;
     flex-direction: $direction;
@@ -21,6 +25,8 @@ body {
     padding: 0;
     margin: 0;
     height: 100vh;
+    background-color: $bodyColor;
+    overflow: hidden;
 
     ul {
         list-style: none;
@@ -31,100 +37,56 @@ body {
 }
 
 header {
-    font-size: 1.4rem;
-    border: 1px solid black;
+    font-size: 1.3rem;
     font-weight: bold;
+    color: whitesmoke;
+    font-family: "Philosopher", sans-serif;
+    background-color: $headerColor;
+
+    h1 {
+        user-select: none;
+        cursor: pointer;
+        transition: transform .3s ease-in-out;
+
+        &:hover {
+            transform: scale(1.1);
+            text-shadow: 0 0 5px #c5c5c5;
+        }
+    }
 
     @include flexCenter(column, center, center)
 }
 
 nav {
-    font-size: 2rem;
-    border-bottom: 1px solid black;
-    
+    font-size: 1.5rem;
+    background-color: $headerColor;
+    color: whitesmoke;
+    font-weight: bold;
+    font-family: "Philosopher", sans-serif;
 
     ul {
-        padding: 0;
         margin: 0;
         width: 100%;
         display: grid;
         grid-template-columns: 1fr 1fr;
 
         li {
+            padding-bottom: 30px;
             height: 3rem;
             user-select: none;
+            transition: transform .3s ease-in-out;
             &:hover {
-                background-color: lightblue;
                 text-decoration: underline;
                 cursor: pointer;
+                transform: scale(1.1);
+                text-shadow: 0 0 5px #c5c5c5;
             }
 
             @include flexCenter(row, center, center)
         }
-
-        li:first-child {
-            border-right: 1px solid black;
-        }
         
     }
 
-    /*ul {
-            height: 3rem;
-            margin: 0;
-            padding: 0;
-
-        .door-tab {
-            width: 100%;
-            text-align: center;
-            padding: .5rem;
-
-            &:first-child {
-
-                &:hover {
-                    background-color: rgb(117, 250, 206);
-                    cursor: pointer;
-                }
-                
-            }
-
-            &:nth-child(2) {
-
-                &:hover {
-                    background-color: rgb(120, 206, 255);
-                    cursor: pointer;
-                }
-            }
-
-            &:nth-child(3) {
-
-                &:hover {
-                    background-color: rgb(255, 118, 237);
-                    cursor: pointer;
-                
-                }
-            }
-
-            &:nth-child(4) {
-
-                &:hover {
-                    background-color: rgb(140, 206, 250);
-                    cursor: pointer;
-                }
-            }
-
-            &:nth-child(5) {
-
-                &:hover {
-                    background-color: rgb(225, 142, 250);
-                    cursor: pointer;
-                }
-            }
-        }
-
-
-    @include flexCenter(row, center, center)
-
-    }*/
 
 
     @include flexCenter(row, center, center)
@@ -137,8 +99,6 @@ nav {
     height: 100vh;
     position: relative;
 
-    display: none;
-
     .mansus-table {
         background-image: url('../src/img/Mansus.png');
         background-repeat: no-repeat;
@@ -147,13 +107,19 @@ nav {
         margin: 0;
         padding-top: 1rem;
         overflow: auto;
+        position: relative;
+        top: -.5px;
+        transition: all .5s ease-in-out;
         
         height: 100%;
         width: 100%;
         gap: 10px;
     
         ul {
-            box-shadow: 6px 6px 3px 3px rgb(56, 56, 56);
+            box-shadow: 5px 5px 5px 2px rgb(56, 56, 56);
+            border-top: 1.5px solid black;
+            border-right: 1.5px solid black;
+            border-bottom: 1.5px solid black;
             border-top-right-radius: 10px;
             border-bottom-right-radius: 10px;
             min-width: 420px;
@@ -209,26 +175,36 @@ nav {
             margin-right: 200px;
             overflow: auto;
             flex-shrink: 0;
+            opacity: 1;
+            transition: opacity .3s;
+            border-radius: 10px;
 
             .headers {
                 display: grid;
                 grid-template-columns: repeat(3, 350px);
                 font-size: 1.4rem;
                 text-align: center;
+                font-weight: bold;
+                font-family: "Philosopher", sans-serif;
 
                 div {
-                    padding-top: 20px;
-                    border-top: 1px solid black;
-                    border-bottom: 1px solid black;
+                    padding: 10px 20px 0px 20px;
+                    border-top: 2px solid black;
+                    border-bottom: 2px solid black;
+                }
+
+                div:first-child {
+                    border-top-left-radius: 10px;
                 }
 
                 div:last-child {
-                    border-right: 1px solid black;
-                    border-left: 1px solid black;
+                    border-right: 2px solid black;
+                    border-left: 2px solid black;
+                    border-top-right-radius: 10px;
                 }
 
                 div:not(:last-child) {
-                    border-left: 1px solid black;
+                    border-left: 2px solid black;
                 }
             }
 
@@ -242,26 +218,41 @@ nav {
                     grid-template-rows: repeat(3, 1fr);
                     grid-auto-rows: 1fr;
                     text-align: center;
-                    border-bottom: 1px solid black;
-                    
-                    border-right: 1px solid black;
+                    border-bottom: 2px solid black;
+                    border-right: 2px solid black;
                     
                     div {
                         padding: 20px 15px 15px 10px;
                     }
                     div:not(:last-child) {
-                        border-bottom: 1px solid black;
+                        border-bottom: 2px solid black;
                     }
+
+                    div:last-child {
+                        border-bottom-left-radius: 10px;
+                    }
+
+                    &:first-child {
+                        border-left: 2px solid black;
+                    }
+
                 }
 
-                .products:first-child {
-                    border-left: 1px solid black;
-                }
+                
             }
         }
 
+        .way-box.inactive {
+            opacity: 0;
+        }
+
         @include flexCenter(row, space-between, center)
-        
+
+    }
+
+    .mansus-table.hidden {
+        position: absolute;
+        top: 815px;
     }
 
 }

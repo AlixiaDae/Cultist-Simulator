@@ -1,39 +1,45 @@
 import mansus from "./products.js"
 
+// VARIABLES
+const header = document.querySelector("h1")
 const mainNavItem = document.querySelectorAll(".main-nav-item")
 const mansusTable = document.querySelector(".mansus-table")
 const contentBox = document.querySelector(".content-box")
+const doorTabs = document.querySelectorAll(".door-tab")
+const wayBox = document.querySelector(".way-box")
+const wayBoxHeaders = document.querySelector(".headers")
+const wayProductsColumns = document.querySelectorAll(".products")
+
+// LISTENERS
+header.addEventListener("click", () => {
+    mansusTable.classList.toggle("hidden")
+    wayBox.classList.add("inactive")
+})
+
+mainNavItem[0].addEventListener("click", () => {
+    mansusTable.classList.toggle("hidden")
+    wayBox.classList.add("inactive")
+})
 
 mainNavItem.forEach(tab => {
     tab.addEventListener("click", () => {
         if(tab.textContent == "The Mansus") {
-            wayBox.style.display = "none"
-            if(contentBox.style.display == "block") {
-                contentBox.style.display = "none"
-            } else {
-                contentBox.style.display = "block"
-                //contentBox.style.backgroundColor = "rgb(0, 96, 126)"
-            }
-            
+            contentBox.style.display = "block"
         } else {
             console.log("none yet")
         }
     })
 })
 
-const doorTabs = document.querySelectorAll(".door-tab")
-const wayBox = document.querySelector(".way-box")
-const wayBoxHeaders = document.querySelector(".headers")
-
-const wayProductsColumns = document.querySelectorAll(".products")
-
 doorTabs.forEach(tab => {
     tab.addEventListener("click", () => {
-        console.log(tab.textContent)
+        wayBox.classList.remove("inactive")
         populateWayBox(tab, wayBoxHeaders)
         populateWayColumns(tab.textContent)
     })
 })
+
+// DOM FUNCTIONS
 
 function populateWayBox(tabName, box) {
         if(tabName.textContent.toLowerCase() == "the wood") {
@@ -42,9 +48,9 @@ function populateWayBox(tabName, box) {
             const wellHeader = document.createElement("div")
             const templeHeader = document.createElement("div")
 
-            woodHeader.textContent = "The Wood"
-            wellHeader.textContent = "The Well"
-            templeHeader.textContent = "The Temple of the Wheel"
+            woodHeader.textContent = "THE WOOD"
+            wellHeader.textContent = "THE WELL"
+            templeHeader.textContent = "THE TEMPLE OF THE WHEEL"
 
             box.append(woodHeader, wellHeader, templeHeader)
             
@@ -54,9 +60,9 @@ function populateWayBox(tabName, box) {
             const lodgeHeader = document.createElement("div")
             const orchardHeader = document.createElement("div")
 
-            whiteHeader.textContent = "The White Door"
-            lodgeHeader.textContent = "Lodge of the Sage Knight"
-            orchardHeader.textContent = "The Orchard of Lights"
+            whiteHeader.textContent = "THE WHITE DOOR"
+            lodgeHeader.textContent = "LODGE OF THE SAGE KNIGHT"
+            orchardHeader.textContent = "THE ORCHARD OF LIGHTS"
 
             box.append(whiteHeader, lodgeHeader, orchardHeader)
         } else if(tabName.textContent.toLowerCase() == "the stag door") {
@@ -65,9 +71,9 @@ function populateWayBox(tabName, box) {
             const ascentHeader = document.createElement("div")
             const paintedHeader = document.createElement("div")
 
-            stagHeader.textContent = "The Stag Door"
-            ascentHeader.textContent = "The Ascent of Knives"
-            paintedHeader.textContent = "The Painted River"
+            stagHeader.textContent = "THE STAG DOOR"
+            ascentHeader.textContent = "THE ASCENT OF KNIVES"
+            paintedHeader.textContent = "THE PAINTED RIVER"
 
             box.append(stagHeader, ascentHeader, paintedHeader)
         } else if(tabName.textContent.toLowerCase() == "the spider door") {
@@ -76,9 +82,9 @@ function populateWayBox(tabName, box) {
             const mallearyHeader = document.createElement("div")
             const chamberHeader = document.createElement("div")
 
-            spiderHeader.textContent = "The Spider's Door"
-            mallearyHeader.textContent = "The Malleary"
-            chamberHeader.textContent = "The Chamber of Ways"
+            spiderHeader.textContent = "THE SPIDER'S DOOR"
+            mallearyHeader.textContent = "THE MALLEARY"
+            chamberHeader.textContent = "THE CHAMBER OF WAYS"
 
             box.append(spiderHeader, mallearyHeader, chamberHeader)
         } else {
@@ -87,9 +93,9 @@ function populateWayBox(tabName, box) {
             const redHeader = document.createElement("div")
             const wormHeader = document.createElement("div")
 
-            peacockHeader.textContent = "The Peacock's Door"
-            redHeader.textContent = "The Red Church"
-            wormHeader.textContent = "The Worm Museum"
+            peacockHeader.textContent = "THE PEACOCK'S DOOR"
+            redHeader.textContent = "THE RED CHURCH"
+            wormHeader.textContent = "THE WORM MUSEUM"
 
             box.append(peacockHeader, redHeader, wormHeader)
         }
@@ -196,17 +202,13 @@ function populateWayColumns(tabName) {
     
 }
 
-
-
-
-// UTIL
+// UTIL FUNCTIONS
 
 function clearWayBox() {
     wayBoxHeaders.textContent = ""
     wayProductsColumns.forEach(item => {
         item.textContent = ""
-    })
-    wayBox.style.display = "grid"   
+    })  
 }
 
 function createDiv(name, aspect, degree) {
@@ -220,5 +222,3 @@ function createDiv(name, aspect, degree) {
 
     return div
 }
-
-console.log(mansus.getWay("The White Door"))
