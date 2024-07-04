@@ -16,6 +16,7 @@ console.log(grim)
 // LISTENERS
 header.addEventListener("click", () => {
     mansusTable.classList.add("hidden")
+    rituals.classList.add("hidden")
     wayBox.classList.add("inactive")
 })
 
